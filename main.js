@@ -23,9 +23,27 @@ $(document).ready(function () {
             prevPhoto();
         }
     });
-    
-});
 
+    // BONUS
+    $('.nav .fa-circle').click(function () {
+        // console.log($(this));
+        var circle = $('.nav .fa-circle');
+        var img = $('.slider-wrapper img');
+
+        $(circle).removeClass('active');
+        $(this).addClass('active');
+
+        var trovato = false;
+
+        for (var i = 0; i < circle.length && !trovato; i++) {
+            if ($(circle[i]).hasClass('active')) {
+                $(img).removeClass('active');
+                $(img[i]).addClass('active');
+                trovato = true;
+            }
+        }
+    });
+});
 
 
 // FUNCTIONS
@@ -53,10 +71,4 @@ function prevPhoto() {
         $(img).removeClass('active').prev().addClass('active');
         $('.nav > .active').removeClass('active').prev().addClass('active');
     }
-}
-
-
-function uniKeyCode(event) {
-  var key = event.keyCode;
-  console.log(key);
 }
